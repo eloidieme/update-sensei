@@ -1,0 +1,14 @@
+1.20.0:
+  - item: "numpy.asscalar"
+    deprecated_in: "1.16"
+    removed_in: "1.20"
+    description: "The use of np.asscalar(x) is deprecated. Use x.item() instead."
+  - item: "numpy.random.random_integers"
+    deprecated_in: "1.11"
+    removed_in: "1.20"
+    description: "random_integers is deprecated. Use randint instead."
+1.22.0:
+  - item: "numpy.function"
+    deprecated_in: "1.20"
+    removed_in: "1.22"
+    description: "A description"

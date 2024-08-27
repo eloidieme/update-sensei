@@ -1,0 +1,5 @@
+2.0.0:
+  - item: "pandas.DataFrame.append"
+    deprecated_in: "1.4.0"
+    removed_in: "2.0.0"
+    description: "The DataFrame.append() method is deprecated. Use pandas.concat() instead."

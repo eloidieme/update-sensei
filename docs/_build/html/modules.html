@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modules &mdash; update-sensei 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=01f34227"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to Update Sensei’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            update-sensei
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-update_sensei">update_sensei Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-update_sensei.analyzers.base_analyzer">analyzers Subpackage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#update_sensei.analyzers.base_analyzer.AnalyzerFactory"><code class="docutils literal notranslate"><span class="pre">AnalyzerFactory</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.analyzers.base_analyzer.AnalyzerFactory.get_analyzer"><code class="docutils literal notranslate"><span class="pre">AnalyzerFactory.get_analyzer()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#update_sensei.analyzers.base_analyzer.BaseAnalyzer"><code class="docutils literal notranslate"><span class="pre">BaseAnalyzer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.analyzers.base_analyzer.BaseAnalyzer.add_deprecation"><code class="docutils literal notranslate"><span class="pre">BaseAnalyzer.add_deprecation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.analyzers.base_analyzer.BaseAnalyzer.analyze"><code class="docutils literal notranslate"><span class="pre">BaseAnalyzer.analyze()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.analyzers.base_analyzer.BaseAnalyzer.analyze_function_calls"><code class="docutils literal notranslate"><span class="pre">BaseAnalyzer.analyze_function_calls()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.analyzers.base_analyzer.BaseAnalyzer.analyze_imports"><code class="docutils literal notranslate"><span class="pre">BaseAnalyzer.analyze_imports()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.analyzers.base_analyzer.BaseAnalyzer.get_deprecation_info"><code class="docutils literal notranslate"><span class="pre">BaseAnalyzer.get_deprecation_info()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#update_sensei.analyzers.numpy_analyzer.NumpyAnalyzer"><code class="docutils literal notranslate"><span class="pre">NumpyAnalyzer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.analyzers.numpy_analyzer.NumpyAnalyzer.add_deprecation"><code class="docutils literal notranslate"><span class="pre">NumpyAnalyzer.add_deprecation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.analyzers.numpy_analyzer.NumpyAnalyzer.analyze_function_calls"><code class="docutils literal notranslate"><span class="pre">NumpyAnalyzer.analyze_function_calls()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.analyzers.numpy_analyzer.NumpyAnalyzer.analyze_imports"><code class="docutils literal notranslate"><span class="pre">NumpyAnalyzer.analyze_imports()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.analyzers.numpy_analyzer.NumpyAnalyzer.get_deprecation_info"><code class="docutils literal notranslate"><span class="pre">NumpyAnalyzer.get_deprecation_info()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#update_sensei.analyzers.pandas_analyzer.PandasAnalyzer"><code class="docutils literal notranslate"><span class="pre">PandasAnalyzer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.analyzers.pandas_analyzer.PandasAnalyzer.add_deprecation"><code class="docutils literal notranslate"><span class="pre">PandasAnalyzer.add_deprecation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.analyzers.pandas_analyzer.PandasAnalyzer.analyze_function_calls"><code class="docutils literal notranslate"><span class="pre">PandasAnalyzer.analyze_function_calls()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.analyzers.pandas_analyzer.PandasAnalyzer.analyze_imports"><code class="docutils literal notranslate"><span class="pre">PandasAnalyzer.analyze_imports()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.analyzers.pandas_analyzer.PandasAnalyzer.get_deprecation_info"><code class="docutils literal notranslate"><span class="pre">PandasAnalyzer.get_deprecation_info()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-update_sensei.data_management.deprecation_data_loader">data_management Subpackage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#update_sensei.data_management.deprecation_data_loader.DeprecationDataLoader"><code class="docutils literal notranslate"><span class="pre">DeprecationDataLoader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.data_management.deprecation_data_loader.DeprecationDataLoader.load_library_data"><code class="docutils literal notranslate"><span class="pre">DeprecationDataLoader.load_library_data()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-update_sensei.deprecation_detector.changelog_parser">deprecation_detector Subpackage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#update_sensei.deprecation_detector.changelog_parser.ChangelogParser"><code class="docutils literal notranslate"><span class="pre">ChangelogParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.deprecation_detector.changelog_parser.ChangelogParser.get_changelog_links"><code class="docutils literal notranslate"><span class="pre">ChangelogParser.get_changelog_links()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.deprecation_detector.changelog_parser.ChangelogParser.get_changelog_url"><code class="docutils literal notranslate"><span class="pre">ChangelogParser.get_changelog_url()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#update_sensei.deprecation_detector.deprecation_finder.DeprecationFinder"><code class="docutils literal notranslate"><span class="pre">DeprecationFinder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.deprecation_detector.deprecation_finder.DeprecationFinder.find_deprecations"><code class="docutils literal notranslate"><span class="pre">DeprecationFinder.find_deprecations()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-update_sensei.file_parser.python_file_parser">file_parser Subpackage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#update_sensei.file_parser.python_file_parser.ProjectParser"><code class="docutils literal notranslate"><span class="pre">ProjectParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.file_parser.python_file_parser.ProjectParser.find_python_files"><code class="docutils literal notranslate"><span class="pre">ProjectParser.find_python_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.file_parser.python_file_parser.ProjectParser.parse_project"><code class="docutils literal notranslate"><span class="pre">ProjectParser.parse_project()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#update_sensei.file_parser.requirements_parser.RequirementsParser"><code class="docutils literal notranslate"><span class="pre">RequirementsParser</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.file_parser.requirements_parser.RequirementsParser.compare_requirements"><code class="docutils literal notranslate"><span class="pre">RequirementsParser.compare_requirements()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.file_parser.requirements_parser.RequirementsParser.get_package_version"><code class="docutils literal notranslate"><span class="pre">RequirementsParser.get_package_version()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.file_parser.requirements_parser.RequirementsParser.parse_and_compare_requirements"><code class="docutils literal notranslate"><span class="pre">RequirementsParser.parse_and_compare_requirements()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.file_parser.requirements_parser.RequirementsParser.parse_requirements"><code class="docutils literal notranslate"><span class="pre">RequirementsParser.parse_requirements()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-update_sensei.utils.config">utils Subpackage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#update_sensei.utils.config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.utils.config.Config.CHANGELOG_URLS"><code class="docutils literal notranslate"><span class="pre">Config.CHANGELOG_URLS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.utils.config.Config.DEFAULT_FROM_PYTHON_VERSION"><code class="docutils literal notranslate"><span class="pre">Config.DEFAULT_FROM_PYTHON_VERSION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.utils.config.Config.DEFAULT_OUTPUT_FORMAT"><code class="docutils literal notranslate"><span class="pre">Config.DEFAULT_OUTPUT_FORMAT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.utils.config.Config.DEFAULT_TO_PYTHON_VERSION"><code class="docutils literal notranslate"><span class="pre">Config.DEFAULT_TO_PYTHON_VERSION</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.utils.config.Config.LOG_LEVEL"><code class="docutils literal notranslate"><span class="pre">Config.LOG_LEVEL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.utils.config.Config.MAX_FILES_TO_ANALYZE"><code class="docutils literal notranslate"><span class="pre">Config.MAX_FILES_TO_ANALYZE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.utils.config.Config.MAX_WORKERS"><code class="docutils literal notranslate"><span class="pre">Config.MAX_WORKERS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.utils.config.Config.MIN_SEVERITY_TO_REPORT"><code class="docutils literal notranslate"><span class="pre">Config.MIN_SEVERITY_TO_REPORT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.utils.config.Config.PYTHON_FILE_EXTENSIONS"><code class="docutils literal notranslate"><span class="pre">Config.PYTHON_FILE_EXTENSIONS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.utils.config.Config.SEVERITY_LEVELS"><code class="docutils literal notranslate"><span class="pre">Config.SEVERITY_LEVELS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.utils.config.Config.SUPPORTED_LIBRARIES"><code class="docutils literal notranslate"><span class="pre">Config.SUPPORTED_LIBRARIES</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.utils.config.Config.SUPPORTED_OUTPUT_FORMATS"><code class="docutils literal notranslate"><span class="pre">Config.SUPPORTED_OUTPUT_FORMATS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.utils.config.Config.USE_MULTIPROCESSING"><code class="docutils literal notranslate"><span class="pre">Config.USE_MULTIPROCESSING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.utils.config.Config.get_changelog_url"><code class="docutils literal notranslate"><span class="pre">Config.get_changelog_url()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.utils.config.Config.get_library_versions"><code class="docutils literal notranslate"><span class="pre">Config.get_library_versions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.utils.config.Config.get_severity_level"><code class="docutils literal notranslate"><span class="pre">Config.get_severity_level()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.utils.config.Config.is_library_supported"><code class="docutils literal notranslate"><span class="pre">Config.is_library_supported()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update_sensei.utils.config.Config.should_report_severity"><code class="docutils literal notranslate"><span class="pre">Config.should_report_severity()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">update-sensei</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Modules</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="modules">
+<h1>Modules<a class="headerlink" href="#modules" title="Link to this heading"></a></h1>
+<section id="module-update_sensei">
+<span id="update-sensei-package"></span><h2>update_sensei Package<a class="headerlink" href="#module-update_sensei" title="Link to this heading"></a></h2>
+</section>
+<section id="module-update_sensei.analyzers.base_analyzer">
+<span id="analyzers-subpackage"></span><h2>analyzers Subpackage<a class="headerlink" href="#module-update_sensei.analyzers.base_analyzer" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="update_sensei.analyzers.base_analyzer.AnalyzerFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">update_sensei.analyzers.base_analyzer.</span></span><span class="sig-name descname"><span class="pre">AnalyzerFactory</span></span><a class="headerlink" href="#update_sensei.analyzers.base_analyzer.AnalyzerFactory" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.analyzers.base_analyzer.AnalyzerFactory.get_analyzer">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_analyzer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">library</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.analyzers.base_analyzer.AnalyzerFactory.get_analyzer" title="Link to this definition"></a></dt>
+<dd><p>Factory method to get the appropriate analyzer based on the library.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>library</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Name of the library (e.g. ‘numpy’, ‘pandas’)</p></li>
+<li><p><strong>from_version</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Starting version of the library</p></li>
+<li><p><strong>to_version</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Target version of the library</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#update_sensei.analyzers.base_analyzer.BaseAnalyzer" title="update_sensei.analyzers.base_analyzer.BaseAnalyzer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseAnalyzer</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>An instance of the appropriate analyzer</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="update_sensei.analyzers.base_analyzer.BaseAnalyzer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">update_sensei.analyzers.base_analyzer.</span></span><span class="sig-name descname"><span class="pre">BaseAnalyzer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">library</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.analyzers.base_analyzer.BaseAnalyzer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.analyzers.base_analyzer.BaseAnalyzer.add_deprecation">
+<span class="sig-name descname"><span class="pre">add_deprecation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.analyzers.base_analyzer.BaseAnalyzer.add_deprecation" title="Link to this definition"></a></dt>
+<dd><p>Add a deprecation finding to the list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – The name of the deprecated item</p></li>
+<li><p><strong>line</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Line number where the deprecation was found</p></li>
+<li><p><strong>col</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Column number where the deprecation was found</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.analyzers.base_analyzer.BaseAnalyzer.analyze">
+<span class="sig-name descname"><span class="pre">analyze</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parsed_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.analyzers.base_analyzer.BaseAnalyzer.analyze" title="Link to this definition"></a></dt>
+<dd><p>Perform full analysis on the parsed data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parsed_data</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span>) – Dictionary containing parsed file information</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of deprecation findings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.analyzers.base_analyzer.BaseAnalyzer.analyze_function_calls">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">analyze_function_calls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_calls</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.analyzers.base_analyzer.BaseAnalyzer.analyze_function_calls" title="Link to this definition"></a></dt>
+<dd><p>Analyze function calls for potential deprecations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function_calls</strong> – List of dictionaries containing function call information</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.analyzers.base_analyzer.BaseAnalyzer.analyze_imports">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">analyze_imports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imports</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.analyzers.base_analyzer.BaseAnalyzer.analyze_imports" title="Link to this definition"></a></dt>
+<dd><p>Analyze import statements for potential deprecations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>imports</strong> – List of dictionaries containing import information</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.analyzers.base_analyzer.BaseAnalyzer.get_deprecation_info">
+<span class="sig-name descname"><span class="pre">get_deprecation_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.analyzers.base_analyzer.BaseAnalyzer.get_deprecation_info" title="Link to this definition"></a></dt>
+<dd><p>Retrieve deprecation information for a specific item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>item</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – The name of the deprecated item (function, class, etc.)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing deprecation details</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-update_sensei.analyzers.numpy_analyzer">
+<dt class="sig sig-object py" id="update_sensei.analyzers.numpy_analyzer.NumpyAnalyzer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">update_sensei.analyzers.numpy_analyzer.</span></span><span class="sig-name descname"><span class="pre">NumpyAnalyzer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.analyzers.numpy_analyzer.NumpyAnalyzer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#update_sensei.analyzers.base_analyzer.BaseAnalyzer" title="update_sensei.analyzers.base_analyzer.BaseAnalyzer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseAnalyzer</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.analyzers.numpy_analyzer.NumpyAnalyzer.add_deprecation">
+<span class="sig-name descname"><span class="pre">add_deprecation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.analyzers.numpy_analyzer.NumpyAnalyzer.add_deprecation" title="Link to this definition"></a></dt>
+<dd><p>Add a deprecation finding to the list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – The name of the deprecated item</p></li>
+<li><p><strong>line</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Line number where the deprecation was found</p></li>
+<li><p><strong>col</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Column number where the deprecation was found</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.analyzers.numpy_analyzer.NumpyAnalyzer.analyze_function_calls">
+<span class="sig-name descname"><span class="pre">analyze_function_calls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_calls</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.analyzers.numpy_analyzer.NumpyAnalyzer.analyze_function_calls" title="Link to this definition"></a></dt>
+<dd><p>Analyze function calls for potential deprecations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function_calls</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]</span>) – List of dictionaries containing function call information</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.analyzers.numpy_analyzer.NumpyAnalyzer.analyze_imports">
+<span class="sig-name descname"><span class="pre">analyze_imports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imports</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.analyzers.numpy_analyzer.NumpyAnalyzer.analyze_imports" title="Link to this definition"></a></dt>
+<dd><p>Analyze import statements for potential deprecations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>imports</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]</span>) – List of dictionaries containing import information</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.analyzers.numpy_analyzer.NumpyAnalyzer.get_deprecation_info">
+<span class="sig-name descname"><span class="pre">get_deprecation_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.analyzers.numpy_analyzer.NumpyAnalyzer.get_deprecation_info" title="Link to this definition"></a></dt>
+<dd><p>Retrieve deprecation information for a specific item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>item</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – The name of the deprecated item (function, class, etc.)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary containing deprecation details</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-update_sensei.analyzers.pandas_analyzer">
+<dt class="sig sig-object py" id="update_sensei.analyzers.pandas_analyzer.PandasAnalyzer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">update_sensei.analyzers.pandas_analyzer.</span></span><span class="sig-name descname"><span class="pre">PandasAnalyzer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.analyzers.pandas_analyzer.PandasAnalyzer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#update_sensei.analyzers.base_analyzer.BaseAnalyzer" title="update_sensei.analyzers.base_analyzer.BaseAnalyzer"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseAnalyzer</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.analyzers.pandas_analyzer.PandasAnalyzer.add_deprecation">
+<span class="sig-name descname"><span class="pre">add_deprecation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.analyzers.pandas_analyzer.PandasAnalyzer.add_deprecation" title="Link to this definition"></a></dt>
+<dd><p>Add a deprecation finding to the list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – The name of the deprecated item</p></li>
+<li><p><strong>line</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Line number where the deprecation was found</p></li>
+<li><p><strong>col</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span>) – Column number where the deprecation was found</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.analyzers.pandas_analyzer.PandasAnalyzer.analyze_function_calls">
+<span class="sig-name descname"><span class="pre">analyze_function_calls</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_calls</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.analyzers.pandas_analyzer.PandasAnalyzer.analyze_function_calls" title="Link to this definition"></a></dt>
+<dd><p>Analyze function calls for potential deprecations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function_calls</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]</span>) – List of dictionaries containing function call information</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.analyzers.pandas_analyzer.PandasAnalyzer.analyze_imports">
+<span class="sig-name descname"><span class="pre">analyze_imports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imports</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.analyzers.pandas_analyzer.PandasAnalyzer.analyze_imports" title="Link to this definition"></a></dt>
+<dd><p>Analyze import statements for potential deprecations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>imports</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]</span>) – List of dictionaries containing import information</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.analyzers.pandas_analyzer.PandasAnalyzer.get_deprecation_info">
+<span class="sig-name descname"><span class="pre">get_deprecation_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.analyzers.pandas_analyzer.PandasAnalyzer.get_deprecation_info" title="Link to this definition"></a></dt>
+<dd><p>Retrieve deprecation information for a specific item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>item</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – The name of the deprecated item (function, class, etc.)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary containing deprecation details</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-update_sensei.data_management.deprecation_data_loader">
+<span id="data-management-subpackage"></span><h2>data_management Subpackage<a class="headerlink" href="#module-update_sensei.data_management.deprecation_data_loader" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="update_sensei.data_management.deprecation_data_loader.DeprecationDataLoader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">update_sensei.data_management.deprecation_data_loader.</span></span><span class="sig-name descname"><span class="pre">DeprecationDataLoader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.data_management.deprecation_data_loader.DeprecationDataLoader" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.data_management.deprecation_data_loader.DeprecationDataLoader.load_library_data">
+<span class="sig-name descname"><span class="pre">load_library_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">library</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.data_management.deprecation_data_loader.DeprecationDataLoader.load_library_data" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-update_sensei.deprecation_detector.changelog_parser">
+<span id="deprecation-detector-subpackage"></span><h2>deprecation_detector Subpackage<a class="headerlink" href="#module-update_sensei.deprecation_detector.changelog_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="update_sensei.deprecation_detector.changelog_parser.ChangelogParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">update_sensei.deprecation_detector.changelog_parser.</span></span><span class="sig-name descname"><span class="pre">ChangelogParser</span></span><a class="headerlink" href="#update_sensei.deprecation_detector.changelog_parser.ChangelogParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.deprecation_detector.changelog_parser.ChangelogParser.get_changelog_links">
+<span class="sig-name descname"><span class="pre">get_changelog_links</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">library</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_version</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deprecated_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">removed_in</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.deprecation_detector.changelog_parser.ChangelogParser.get_changelog_links" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.deprecation_detector.changelog_parser.ChangelogParser.get_changelog_url">
+<span class="sig-name descname"><span class="pre">get_changelog_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">library</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.deprecation_detector.changelog_parser.ChangelogParser.get_changelog_url" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-update_sensei.deprecation_detector.deprecation_finder">
+<dt class="sig sig-object py" id="update_sensei.deprecation_detector.deprecation_finder.DeprecationFinder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">update_sensei.deprecation_detector.deprecation_finder.</span></span><span class="sig-name descname"><span class="pre">DeprecationFinder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_versions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_versions</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.deprecation_detector.deprecation_finder.DeprecationFinder" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.deprecation_detector.deprecation_finder.DeprecationFinder.find_deprecations">
+<span class="sig-name descname"><span class="pre">find_deprecations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parsed_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.deprecation_detector.deprecation_finder.DeprecationFinder.find_deprecations" title="Link to this definition"></a></dt>
+<dd><p>Find deprecations in the parsed data.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-update_sensei.file_parser.python_file_parser">
+<span id="file-parser-subpackage"></span><h2>file_parser Subpackage<a class="headerlink" href="#module-update_sensei.file_parser.python_file_parser" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="update_sensei.file_parser.python_file_parser.ProjectParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">update_sensei.file_parser.python_file_parser.</span></span><span class="sig-name descname"><span class="pre">ProjectParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.file_parser.python_file_parser.ProjectParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.file_parser.python_file_parser.ProjectParser.find_python_files">
+<span class="sig-name descname"><span class="pre">find_python_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.file_parser.python_file_parser.ProjectParser.find_python_files" title="Link to this definition"></a></dt>
+<dd><p>Find all Python files in the project directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.file_parser.python_file_parser.ProjectParser.parse_project">
+<span class="sig-name descname"><span class="pre">parse_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.file_parser.python_file_parser.ProjectParser.parse_project" title="Link to this definition"></a></dt>
+<dd><p>Parse all Python files in the project.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class" id="module-update_sensei.file_parser.requirements_parser">
+<dt class="sig sig-object py" id="update_sensei.file_parser.requirements_parser.RequirementsParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">update_sensei.file_parser.requirements_parser.</span></span><span class="sig-name descname"><span class="pre">RequirementsParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.file_parser.requirements_parser.RequirementsParser" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.file_parser.requirements_parser.RequirementsParser.compare_requirements">
+<span class="sig-name descname"><span class="pre">compare_requirements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other_parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.file_parser.requirements_parser.RequirementsParser.compare_requirements" title="Link to this definition"></a></dt>
+<dd><p>Compare requirements with another RequirementsParser instance.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.file_parser.requirements_parser.RequirementsParser.get_package_version">
+<span class="sig-name descname"><span class="pre">get_package_version</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">package_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.file_parser.requirements_parser.RequirementsParser.get_package_version" title="Link to this definition"></a></dt>
+<dd><p>Get the version of a specific package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.file_parser.requirements_parser.RequirementsParser.parse_and_compare_requirements">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse_and_compare_requirements</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.file_parser.requirements_parser.RequirementsParser.parse_and_compare_requirements" title="Link to this definition"></a></dt>
+<dd><p>Parse and compare two requirements files.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.file_parser.requirements_parser.RequirementsParser.parse_requirements">
+<span class="sig-name descname"><span class="pre">parse_requirements</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.file_parser.requirements_parser.RequirementsParser.parse_requirements" title="Link to this definition"></a></dt>
+<dd><p>Parse the requirements file and extract package information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-update_sensei.utils.config">
+<span id="utils-subpackage"></span><h2>utils Subpackage<a class="headerlink" href="#module-update_sensei.utils.config" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">update_sensei.utils.config.</span></span><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#update_sensei.utils.config.Config" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config.CHANGELOG_URLS">
+<span class="sig-name descname"><span class="pre">CHANGELOG_URLS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">,</span> <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'numpy':</span> <span class="pre">'https://github.com/numpy/numpy/blob/main/doc/release/',</span> <span class="pre">'pandas':</span> <span class="pre">'https://github.com/pandas-dev/pandas/blob/main/CHANGELOG.md'}</span></em><a class="headerlink" href="#update_sensei.utils.config.Config.CHANGELOG_URLS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config.DEFAULT_FROM_PYTHON_VERSION">
+<span class="sig-name descname"><span class="pre">DEFAULT_FROM_PYTHON_VERSION</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'3.10'</span></em><a class="headerlink" href="#update_sensei.utils.config.Config.DEFAULT_FROM_PYTHON_VERSION" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config.DEFAULT_OUTPUT_FORMAT">
+<span class="sig-name descname"><span class="pre">DEFAULT_OUTPUT_FORMAT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'markdown'</span></em><a class="headerlink" href="#update_sensei.utils.config.Config.DEFAULT_OUTPUT_FORMAT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config.DEFAULT_TO_PYTHON_VERSION">
+<span class="sig-name descname"><span class="pre">DEFAULT_TO_PYTHON_VERSION</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'3.11'</span></em><a class="headerlink" href="#update_sensei.utils.config.Config.DEFAULT_TO_PYTHON_VERSION" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config.LOG_LEVEL">
+<span class="sig-name descname"><span class="pre">LOG_LEVEL</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'INFO'</span></em><a class="headerlink" href="#update_sensei.utils.config.Config.LOG_LEVEL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config.MAX_FILES_TO_ANALYZE">
+<span class="sig-name descname"><span class="pre">MAX_FILES_TO_ANALYZE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1000</span></em><a class="headerlink" href="#update_sensei.utils.config.Config.MAX_FILES_TO_ANALYZE" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config.MAX_WORKERS">
+<span class="sig-name descname"><span class="pre">MAX_WORKERS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#update_sensei.utils.config.Config.MAX_WORKERS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config.MIN_SEVERITY_TO_REPORT">
+<span class="sig-name descname"><span class="pre">MIN_SEVERITY_TO_REPORT</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#update_sensei.utils.config.Config.MIN_SEVERITY_TO_REPORT" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config.PYTHON_FILE_EXTENSIONS">
+<span class="sig-name descname"><span class="pre">PYTHON_FILE_EXTENSIONS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['.py',</span> <span class="pre">'.pyw']</span></em><a class="headerlink" href="#update_sensei.utils.config.Config.PYTHON_FILE_EXTENSIONS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config.SEVERITY_LEVELS">
+<span class="sig-name descname"><span class="pre">SEVERITY_LEVELS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">,</span> <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code><span class="pre">]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'CRITICAL':</span> <span class="pre">4,</span> <span class="pre">'HIGH':</span> <span class="pre">3,</span> <span class="pre">'LOW':</span> <span class="pre">1,</span> <span class="pre">'MEDIUM':</span> <span class="pre">2}</span></em><a class="headerlink" href="#update_sensei.utils.config.Config.SEVERITY_LEVELS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config.SUPPORTED_LIBRARIES">
+<span class="sig-name descname"><span class="pre">SUPPORTED_LIBRARIES</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">,</span> <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'numpy':</span> <span class="pre">'1.20.0',</span> <span class="pre">'pandas':</span> <span class="pre">'1.3.0'}</span></em><a class="headerlink" href="#update_sensei.utils.config.Config.SUPPORTED_LIBRARIES" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config.SUPPORTED_OUTPUT_FORMATS">
+<span class="sig-name descname"><span class="pre">SUPPORTED_OUTPUT_FORMATS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['markdown',</span> <span class="pre">'json',</span> <span class="pre">'html']</span></em><a class="headerlink" href="#update_sensei.utils.config.Config.SUPPORTED_OUTPUT_FORMATS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config.USE_MULTIPROCESSING">
+<span class="sig-name descname"><span class="pre">USE_MULTIPROCESSING</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#update_sensei.utils.config.Config.USE_MULTIPROCESSING" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config.get_changelog_url">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_changelog_url</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">library</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.utils.config.Config.get_changelog_url" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config.get_library_versions">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_library_versions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.utils.config.Config.get_library_versions" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config.get_severity_level">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_severity_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">severity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.utils.config.Config.get_severity_level" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config.is_library_supported">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">is_library_supported</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">library</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.utils.config.Config.is_library_supported" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="update_sensei.utils.config.Config.should_report_severity">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">should_report_severity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">severity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#update_sensei.utils.config.Config.should_report_severity" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Update Sensei’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Eloi Dieme.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

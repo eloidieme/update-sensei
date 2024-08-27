@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "update-sensei"
+version = "0.1.0"
+description = "A tool to detect and remediate deprecated code in Python projects"
+authors = [{name = "Eloi DIEME", email = "eloidieme@gmail.com"}]
+license = {file = "LICENSE"}
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
+dependencies = [
+    "astroid>=2.8.0",
+    "packaging>=21.0",
+    "requests>=2.26.0",
+    "astor>=0.8.1",
+    "pyYAML>=6.0.2"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.2.5",
+    "black>=21.9b0",
+    "isort>=5.9.3",
+    "mypy>=0.910",
+    "flake8>=3.9.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/eloidieme/update-sensei"
+Documentation = "https://update-sensei.readthedocs.io"
+Repository = "https://github.com/eloidieme/update-sensei.git"
+
+[project.scripts]
+update_sensei = "update_sensei.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["update_sensei*"]
+exclude = ["tests*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+ignore_missing_imports = true

@@ -1,0 +1,13 @@
+astroid>=2.8.0
+packaging>=21.0
+requests>=2.26.0
+astor>=0.8.1
+pyYAML>=6.0.2
+
+black
+isort
+flake8
+pytest
+sphinx
+sphinx_rtd_theme
+sphinx-autodoc-typehints

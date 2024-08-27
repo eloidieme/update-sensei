@@ -1,6 +1,6 @@
 import ast
 import os
-from typing import Dict, List
+from typing import Any, Dict, List
 
 __all__ = [
     "ProjectParser",
@@ -13,6 +13,9 @@ class PythonFileParser:
         self.tree = None
         self.imports = []
         self.function_calls = []
+        self.constants = []
+        self.type_annotations = []
+        self.arguments = []
 
     def parse_file(self) -> None:
         """Parse the Python file and generate the AST."""
@@ -56,6 +59,50 @@ class PythonFileParser:
                     )
         return self.function_calls
 
+    def extract_constants(self):
+        for node in ast.walk(self.tree):
+            if isinstance(node, ast.Assign):
+                for target in node.targets:
+                    if isinstance(target, ast.Name) and target.id.isupper():
+                        self.constants.append({
+                            "name": target.id,
+                            "line": node.lineno,
+                            "col": node.col_offset,
+                        })
+        return self.constants
+
+    def extract_type_annotations(self):
+        for node in ast.walk(self.tree):
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                if node.returns:
+                    self.type_annotations.append({
+                        "name": f"{node.name} return",
+                        "type": ast.unparse(node.returns),
+                        "line": node.lineno,
+                        "col": node.col_offset,
+                    })
+                for arg in node.args.args:
+                    if arg.annotation:
+                        self.type_annotations.append({
+                            "name": f"{node.name} arg {arg.arg}",
+                            "type": ast.unparse(arg.annotation),
+                            "line": arg.lineno,
+                            "col": arg.col_offset,
+                        })
+        return self.type_annotations
+
+    def extract_arguments(self):
+        for node in ast.walk(self.tree):
+            if isinstance(node, ast.Call):
+                for keyword in node.keywords:
+                    self.arguments.append({
+                        "name": keyword.arg,
+                        "value": ast.unparse(keyword.value),
+                        "line": keyword.lineno,
+                        "col": keyword.col_offset,
+                    })
+        return self.arguments
+
     def _get_attribute_chain(self, node: ast.Attribute) -> str:
         """Helper method to get the full attribute chain for a function call."""
         if isinstance(node.value, ast.Name):
@@ -71,6 +118,9 @@ class PythonFileParser:
             "file_path": self.file_path,
             "imports": self.extract_imports(),
             "function_calls": self.extract_function_calls(),
+            "constants": self.extract_constants(),
+            "type_annotations": self.extract_type_annotations(),
+            "arguments": self.extract_arguments(),
         }
 
 

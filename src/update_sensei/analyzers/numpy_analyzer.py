@@ -21,6 +21,21 @@ class NumpyAnalyzer(BaseAnalyzer):
             if call["name"].startswith("np.") or call["name"].startswith("numpy."):
                 self.add_deprecation(call["name"], call["line"], call["col"])
 
+    def analyze_constants(self, constants: List[Dict[str, Any]]) -> None:
+        for constant in constants:
+            if constant["name"].startswith("np.") or constant["name"].startswith("numpy."):
+                self.add_deprecation(constant["name"], constant["line"], constant["col"])
+
+    def analyze_type_annotations(self, type_annotations: List[Dict[str, Any]]) -> None:
+        for annotation in type_annotations:
+            if "numpy" in annotation["type"] or "np." in annotation["type"]:
+                self.add_deprecation(f"{annotation['name']}:{annotation['type']}", annotation["line"], annotation["col"])
+
+    def analyze_arguments(self, arguments: List[Dict[str, Any]]) -> None:
+        for arg in arguments:
+            if arg["value"].startswith("np.") or arg["value"].startswith("numpy."):
+                self.add_deprecation(f"{arg['name']}={arg['value']}", arg["line"], arg["col"])
+
     def get_deprecation_info(self, item: str) -> Dict[str, Any]:
         item = re.sub(r"^np\.", "numpy.", item)
         return self.deprecation_data.get(item, {})

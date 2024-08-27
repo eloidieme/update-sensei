@@ -30,6 +30,24 @@ class PandasAnalyzer(BaseAnalyzer):
                         f"pandas.Series.{method}", call["line"], call["col"]
                     )
 
+    def analyze_constants(self, constants: List[Dict[str, Any]]) -> None:
+        for constant in constants:
+            if constant["name"].startswith("pd.") or constant["name"].startswith("pandas."):
+                self.add_deprecation(constant["name"], constant["line"], constant["col"])
+
+    def analyze_type_annotations(self, type_annotations: List[Dict[str, Any]]) -> None:
+        for annotation in type_annotations:
+            if "pandas" in annotation["type"] or "pd." in annotation["type"]:
+                self.add_deprecation(f"{annotation['name']}:{annotation['type']}", annotation["line"], annotation["col"])
+
+    def analyze_arguments(self, arguments: List[Dict[str, Any]]) -> None:
+        for arg in arguments:
+            if arg["value"].startswith("pd.") or arg["value"].startswith("pandas."):
+                self.add_deprecation(f"{arg['name']}={arg['value']}", arg["line"], arg["col"])
+            # Check for specific deprecated arguments
+            if arg["name"] in ["inplace", "copy"]:
+                self.add_deprecation(f"{arg['name']}={arg['value']}", arg["line"], arg["col"])
+
     def get_deprecation_info(self, item: str) -> Dict[str, Any]:
         item = re.sub(r"^pd\.", "pandas.", item)
         return self.deprecation_data.get(item, {})

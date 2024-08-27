@@ -18,7 +18,13 @@ def old_numpy_operations():
     arr = np.array([[1, 2], [3, 4]])
     row_sum = np.sum(arr, axis=1.0)
 
-    return x, random_ints, matrix, scalar_value, row_sum
+    # Using deprecated np.dual namespace
+    fft = np.dual.fft
+
+    # Using deprecated np.alen
+    length = np.alen(arr)
+
+    return x, random_ints, matrix, scalar_value, row_sum, fft, length
 
 
 def new_numpy_operations():
@@ -29,8 +35,10 @@ def new_numpy_operations():
     scalar_value = np.array([42]).item()
     arr = np.array([[1, 2], [3, 4]])
     row_sum = np.sum(arr, axis=1)
+    fft = np.fft.fft
+    length = len(arr)
 
-    return x, random_ints, matrix, scalar_value, row_sum
+    return x, random_ints, matrix, scalar_value, row_sum, fft, length
 
 
 if __name__ == "__main__":

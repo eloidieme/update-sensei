@@ -18,31 +18,32 @@ class BaseAnalyzer(ABC):
     def _load_deprecation_data(self) -> Dict[str, Any]:
         return self.data_loader.load_library_data(self.library)
 
+    def analyze_imports(self, imports: List[Dict[str, str]]) -> None:
+        for imp in imports:
+            if imp["type"] == "import" and imp["name"] == self.library:
+                self.add_deprecation(f"{self.library}.*", 0, 0)
+            elif imp["type"] == "from" and imp["module"] == self.library:
+                self.add_deprecation(f'{self.library}.{imp["name"]}', 0, 0)
+
+    def analyze_function_calls(self, function_calls: List[Dict[str, Any]]) -> None:
+        for call in function_calls:
+            if call["name"].startswith(f"{self.library}.") or call["name"].startswith(f"{self.library_alias}."):
+                self.add_deprecation(call["name"], call["line"], call["col"])
+
+    def analyze_constants(self, constants: List[Dict[str, Any]]) -> None:
+        for constant in constants:
+            self.add_deprecation(constant["name"], constant["line"], constant["col"])
+
+    def analyze_type_annotations(self, type_annotations: List[Dict[str, Any]]) -> None:
+        for annotation in type_annotations:
+            self.add_deprecation(f"{annotation['name']}:{annotation['type']}", annotation["line"], annotation["col"])
+
+    def analyze_arguments(self, arguments: List[Dict[str, Any]]) -> None:
+        for arg in arguments:
+            self.add_deprecation(f"{arg['name']}={arg['value']}", arg["line"], arg["col"])
+
     @abstractmethod
-    def analyze_imports(self, imports) -> None:
-        """
-        Analyze import statements for potential deprecations.
-
-        :param imports: List of dictionaries containing import information
-        """
-        pass
-
-    @abstractmethod
-    def analyze_function_calls(self, function_calls) -> None:
-        """
-        Analyze function calls for potential deprecations.
-
-        :param function_calls: List of dictionaries containing function call information
-        """
-        pass
-
-    def get_deprecation_info(self, item: str):
-        """
-        Retrieve deprecation information for a specific item.
-
-        :param item: The name of the deprecated item (function, class, etc.)
-        :return: Dictionary containing deprecation details
-        """
+    def get_deprecation_info(self, item: str) -> Dict[str, Any]:
         pass
 
     def _is_deprecated(self, info: Dict[str, str]) -> bool:
@@ -69,6 +70,9 @@ class BaseAnalyzer(ABC):
         self.deprecations = []
         self.analyze_imports(parsed_data["imports"])
         self.analyze_function_calls(parsed_data["function_calls"])
+        self.analyze_constants(parsed_data["constants"])
+        self.analyze_type_annotations(parsed_data["type_annotations"])
+        self.analyze_arguments(parsed_data["arguments"])
         return self.deprecations
 
     def add_deprecation(self, item: str, line: int, col: int) -> None:

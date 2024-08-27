@@ -7,8 +7,3 @@
     deprecated_in: "1.11"
     removed_in: "1.20"
     description: "random_integers is deprecated. Use randint instead."
-1.22.0:
-  - item: "numpy.function"
-    deprecated_in: "1.20"
-    removed_in: "1.22"
-    description: "A description"

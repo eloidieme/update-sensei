@@ -62,3 +62,6 @@ ENV/
 # Project specific
 logs/
 reports/
+
+# macOS
+.DS_Store
